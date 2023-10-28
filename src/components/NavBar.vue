@@ -81,7 +81,7 @@ export default {
       {href: "#contact", text: "Oferta"},
       {href: "#contact", text: "Salony Cupra"},
     ];
-    const mobileMenuOpen = ref(true);
+    const mobileMenuOpen = ref(false);
     const toggleMobileMenu = () => {
       mobileMenuOpen.value = !mobileMenuOpen.value;
     };
