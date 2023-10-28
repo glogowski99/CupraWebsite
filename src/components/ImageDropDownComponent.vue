@@ -1,35 +1,34 @@
 <template>
-  <div
-      style="margin: 30px; padding: 30px; border: 1px solid #D5D5D5; display: flex; justify-content: space-between;align-items: center;"
-      class="w-full lg:w-[500px] h-[145px]"
-      @click="dropAction">
-    <div v-if="selectedCar" class="flex justify-between items-center">
-      <div class="flex items-center justify-center ">
-        <img :src="selectedCar.image" :alt="selectedCar.alt" class="translate-x-[-1.8rem] lg:translate-x-[-6rem] h-[84px] lg:h-[128px]">
+  <div class="w-full" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <div
+        style="border: 1px solid #D5D5D5; display: flex; justify-content: space-between;align-items: center;padding: 30px 30px 0;margin: 30px 30px 0;"
+        class="w-full lg:w-[500px] h-[145px]"
+        @click="dropAction">
+      <div v-if="selectedCar" class="flex justify-between items-center">
+        <div class="flex items-center justify-center ">
+          <img :src="selectedCar.image" :alt="selectedCar.alt" class="translate-x-[-1.8rem] lg:translate-x-[-6rem] h-[84px] lg:h-[128px]">
           <p class="cupra-normal">{{ selectedCar.name }}</p>
-      </div>
+        </div>
 
-      <div class="ml-10">
+        <div class="ml-10">
+          <img alt="Strzałka do góry lub na dół" src="@/assets/arrow-left.png" :class="{'rotate-[270deg]': open, 'rotate-90': !open}"/>
+        </div>
+      </div>
+      <div v-else class="flex items-center justify-between w-full">
+        <span class="cupra-normal">Wybierz model</span>
         <img alt="Strzałka do góry lub na dół" src="@/assets/arrow-left.png" :class="{'rotate-[270deg]': open, 'rotate-90': !open}"/>
       </div>
     </div>
-    <div v-else class="flex items-center justify-between w-full">
-      <span class="cupra-normal">Wybierz model</span>
-      <img alt="Strzałka do góry lub na dół" src="@/assets/arrow-left.png" :class="{'rotate-[270deg]': open, 'rotate-90': !open}"/>
-    </div>
-
-
-  </div>
-
-  <div v-if="open" class="translate-y-[-1.9rem] lg:translate-x-[8.2rem] w-full" style="">
-    <div v-for="car in cars" :key="car.name">
-      <div
-          @click="selectCar(car)"
-          class="flex justify-start items-center w-full lg:w-[500px] h-[145px]"
-          style="border: 1px solid #D5D5D5;"
-      >
-        <img :src="car.image" :alt="car.alt" class="translate-x-[-1.6rem] lg:translate-x-[-4rem] h-[84px] lg:h-[128px]">
-        <p class="cupra-normal">{{ car.name }}</p>
+    <div v-if="open" class="lg:w-[500px] w-full">
+      <div v-for="car in cars" :key="car.name">
+        <div
+            @click="selectCar(car)"
+            class="flex justify-start items-center w-full lg:w-[500px] h-[145px]"
+            style="border: 1px solid #D5D5D5;"
+        >
+          <img :src="car.image" :alt="car.alt" class="translate-x-[-1.6rem] lg:translate-x-[-4rem] h-[84px] lg:h-[128px]">
+          <p class="cupra-normal">{{ car.name }}</p>
+        </div>
       </div>
     </div>
   </div>
